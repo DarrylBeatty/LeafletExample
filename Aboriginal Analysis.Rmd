@@ -1,3 +1,17 @@
+---
+title: "LGA Analysis of Victoria"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+THis is an example analysis where we will be using R, Markdown and Leaflet to create an interactive HTML document.
+
+```{r load , warning=FALSE, comment=FALSE, warning=FALSE,  message=FALSE}
+
 #Load Libraries
 
 library(leaflet)
@@ -9,11 +23,13 @@ library(readr)
 #Load GeoJson Data from DHHS Web API 
 LGA <- geojsonio::geojson_read("http://data-dhs.opendata.arcgis.com/datasets/1d451fe314e34caa8f563529c242da26_0.geojson", what = "sp")
 
-#Load and join other Data into the Main dataset
+```
 
- #TestData <- read_csv("TestData.csv")
+### Percentage share of Aboriginal population in Victoria
 
- #Areas@data <- left_join(Areas@data,TestData, by = "ServiceAreaID")
+You can also embed Maps, for example:
+
+```{r Map}
 
 
 #create the colour scale
@@ -33,4 +49,8 @@ leaflet(LGA) %>%
               ) %>%
   addLegend(pal = pal, values = ~AboriginalPop, opacity = 1.0,
                          labFormat = labelFormat(transform = function(x) round(x)))
+
+
+
+```
 
