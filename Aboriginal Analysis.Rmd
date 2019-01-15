@@ -32,6 +32,8 @@ You can also embed Maps, for example:
 ```{r Map}
 
 
+LGA$AboriginalPop <- LGA$AboriginalPop * 100
+
 #create the colour scale
 pal <- colorNumeric("viridis", NULL)
 
